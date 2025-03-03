@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Simple Login Page</title>
+		<style>
+			/* [start] Basic Reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			/* [end] Basic Reset */
+			
+			/* [start] Container styling */
+			body {
+				background: #f1f1f1;
+				font-family: Arial, sans-serif;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+			}
+			/* [end] Container styling */
+			
+			/* [start] Login form styling */
+			.login-container {
+				background: #fff;
+				padding: 2rem;
+				border-radius: 8px;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				width: 300px;
+			}
+			.login-container h2 {
+				text-align: center;
+				margin-bottom: 1.5rem;
+				color: #333;
+			}
+			.login-container input {
+				width: 100%;
+				padding: 0.75rem;
+				margin-bottom: 1rem;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				font-size: 1rem;
+			}
+			.login-container button {
+				width: 100%;
+				padding: 0.75rem;
+				background: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 4px;
+				font-size: 1rem;
+				cursor: pointer;
+			}
+			.login-container button:hover {
+				background: #0056b3;
+			}
+			.error-message {
+				color: red;
+				text-align: center;
+				margin-bottom: 1rem;
+			}
+			/* [end] Login form styling */
+			
+			/*
+			@font-face {
+				font-family: 'password';
+				font-style: normal;
+				font-weight: 400;
+				src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+				src: url(./fonts/password.ttf);
+			}
+			*/
+			@font-face {
+				font-family: 'password';
+				font-style: normal;
+				font-weight: 400;
+				src: url(./fonts/password.ttf);
+			}
+			
+			#password {
+				font-family: 'password';
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!-- [start] Login Form Container -->
+		<div class="login-container">
+			<h2>Login</h2>
+			<!-- [start] Error Message -->
+			<div id="error" class="error-message"></div>
+			<!-- [end] Error Message -->
+			<form method="post">
+				<input type="text" id="username" placeholder="Username" autocomplete="off">
+				<input type="text" id="password" placeholder="Password" autocomplete="off">
+				<button type="submit">Login</button>
+			</form>
+		</div>
+		<!-- [end] Login Form Container -->
+		
+		<script>
+			// [start] Form validation and submit handler
+			// sample_function: validate the login form inputs
+			function validateLogin(event) {
+				event.preventDefault(); // Prevent default form submission
+				
+				// Get the input values
+				var username = document.getElementById('username').value.trim();
+				var password = document.getElementById('password').value.trim();
+				var errorDiv = document.getElementById('error');
+				
+				// Clear previous error messages
+				errorDiv.textContent = '';
+				
+				// If any field is empty, show error message
+				if (!username || !password) {
+					errorDiv.textContent = 'Please enter both username and password';
+					return false;
+				}
+				
+				// For demonstration, simulate successful login handling
+				alert('Login successful!\nUsername: ' + username);
+				
+				// In production, you might now submit the data with AJAX or proceed with other authentication logic.
+				return true;
+			}
+			
+			// Add the event listener to the form
+			document.getElementById('loginForm').addEventListener('submit', validateLogin);
+			// [end] Form validation and submit handler
+		</script>
+	</body>
+</html>
